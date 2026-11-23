@@ -1,0 +1,24 @@
+{
+  "name": "birthday-23",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.3",
+    "gsap": "^3.12.5",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.6.4",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "d3-geo": "^3.1.2",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.7",
+    "vue-tsc": "^2.2.0"
+  }
+}

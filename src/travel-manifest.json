@@ -1,0 +1,94 @@
+{
+  "宏村": [
+    {
+      "src": "assets/travel/hongcun/1.webp",
+      "w": 900,
+      "h": 675
+    },
+    {
+      "src": "assets/travel/hongcun/2.webp",
+      "w": 900,
+      "h": 675
+    },
+    {
+      "src": "assets/travel/hongcun/3.webp",
+      "w": 884,
+      "h": 663
+    },
+    {
+      "src": "assets/travel/hongcun/4.webp",
+      "w": 675,
+      "h": 900
+    }
+  ],
+  "庐山": [
+    {
+      "src": "assets/travel/lushan/1.webp",
+      "w": 675,
+      "h": 900
+    },
+    {
+      "src": "assets/travel/lushan/2.webp",
+      "w": 675,
+      "h": 900
+    }
+  ],
+  "南昌": [
+    {
+      "src": "assets/travel/nanchang/1.webp",
+      "w": 675,
+      "h": 900
+    },
+    {
+      "src": "assets/travel/nanchang/2.webp",
+      "w": 675,
+      "h": 900
+    }
+  ],
+  "开封": [
+    {
+      "src": "assets/travel/kaifeng/1.webp",
+      "w": 675,
+      "h": 900
+    },
+    {
+      "src": "assets/travel/kaifeng/2.webp",
+      "w": 675,
+      "h": 900
+    },
+    {
+      "src": "assets/travel/kaifeng/3.webp",
+      "w": 675,
+      "h": 900
+    },
+    {
+      "src": "assets/travel/kaifeng/4.webp",
+      "w": 675,
+      "h": 900
+    }
+  ],
+  "杭州": [
+    {
+      "src": "assets/travel/hangzhou/1.webp",
+      "w": 900,
+      "h": 675
+    },
+    {
+      "src": "assets/travel/hangzhou/2.webp",
+      "w": 675,
+      "h": 900
+    }
+  ],
+  "苏州": [
+    {
+      "src": "assets/travel/suzhou/1.webp",
+      "w": 675,
+      "h": 900
+    },
+    {
+      "src": "assets/travel/suzhou/2.webp",
+      "w": 675,
+      "h": 900
+    }
+  ]
+}

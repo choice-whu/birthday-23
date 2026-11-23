@@ -1,0 +1,35 @@
+:root {
+  /* 全局手账取色板 */
+  --bg-kraft: #B6967A;
+  --bg-kraft-deep: #8A6D53;
+  --bg-kraft-frame: #7D6249;
+  --bg-parchment: #FAF3E8;
+  --bg-dark: #2B231D;
+  --bg-map-sea: #274C5E;
+  --bg-map-land: #E5D2B0;
+  --bg-white: #FFFFFF;
+
+  --accent-red: #C83E3B;
+  --accent-pink: #E84A7F;
+  --accent-blue: #0E6EB8;
+  --gold-glow: #F2B84B;
+
+  --ink: #241D18;
+  --ink-soft: #5C4B3E;
+  --ink-faint: #8F7C6C;
+
+  /* 幕 11 纸条蛋糕 6 色板 */
+  --slip-purple: #9A82C4;
+  --slip-red: #E04860;
+  --slip-yellow: #F8E889;
+  --slip-pink: #F5B8C4;
+  --slip-green: #A8C97F;
+  --slip-light-pink: #F7C6CE;
+
+  /* 字体栈（方案 B） */
+  --font-hand: 'HandFont', 'PingFang SC', 'Microsoft YaHei', cursive;
+  --font-brush: 'BrushFont', 'HandFont', 'STKaiti', serif;
+  --font-body: 'BodyFont', 'Songti SC', 'PingFang SC', serif;
+  --font-serif-en: Georgia, 'Times New Roman', serif;
+  --font-sans-en: 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;
+}
