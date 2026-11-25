@@ -18,7 +18,7 @@ OUT_ART = SITE / "public" / "assets" / "art"
 REVIEW = SITE / ".cache" / "review"
 
 NAMES = [
-    "number_23",
+    "number_22",
     "cake_strawberry",
     "hat_blue_stripes",
     "polaroid_camera",

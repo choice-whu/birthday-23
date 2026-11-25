@@ -17,7 +17,7 @@
       <div ref="ticketEl" class="lottery-ticket">
         <div class="ticket-inner-frame">
           <div class="ticket-micro-top">WIN WHAT MONEY CAN'T BUY</div>
-          <div class="ticket-brand-pill">23</div>
+          <div class="ticket-brand-pill">{{ SITE_CONFIG.profile.age }}</div>
 
           <h3 class="ticket-display">
             <span>intangible</span>

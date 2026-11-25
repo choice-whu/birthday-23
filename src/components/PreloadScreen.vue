@@ -20,7 +20,7 @@
               />
             </svg>
           </div>
-          <p class="preload-title">正在装订你的 23 岁生日手账… {{ progress }}%</p>
+          <p class="preload-title">正在装订你的 {{ SITE_CONFIG.profile.age }} 岁生日手账… {{ progress }}%</p>
           <div class="thread-track">
             <div class="thread-fill" :style="{ width: `${progress}%` }" />
           </div>
@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { SITE_CONFIG } from '../config'
 import PaperBg from './PaperBg.vue'
 
 defineProps<{

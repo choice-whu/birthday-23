@@ -36,7 +36,7 @@
           class="gift-box-img"
         />
         <HandHint v-if="!opened && !isUnderlay" mode="bob" class="gift-hand-hint" />
-        <span v-if="opened" class="gift-opened-tag">23 岁专属礼盒<br />· 已拆封 ✨</span>
+        <span v-if="opened" class="gift-opened-tag">{{ SITE_CONFIG.profile.age }} 岁专属礼盒<br />· 已拆封 ✨</span>
       </button>
 
       <!-- 拆封后：一封长信 / 现实礼物线索 / 双模式终章信笺 -->
@@ -44,7 +44,7 @@
         <!-- 右上角朱红金色火漆印章 -->
         <div class="wax-seal" aria-hidden="true">
           <div class="seal-ring">
-            <span class="seal-num">23</span>
+            <span class="seal-num">{{ SITE_CONFIG.profile.age }}</span>
             <span class="seal-heart">♥</span>
           </div>
         </div>
@@ -52,7 +52,7 @@
         <!-- 实物线索单模式标题（无长信时） -->
         <div v-if="endingMode === 'physical_clue'" class="clue-solo-head">
           <span class="solo-badge">Birthday Treasure</span>
-          <h2 class="letter-title">23 岁快乐，现实里还有一份礼物在等你 ✨</h2>
+          <h2 class="letter-title">{{ SITE_CONFIG.profile.age }} 岁快乐，现实里还有一份礼物在等你 ✨</h2>
         </div>
 
         <!-- 长信模式 / 双模式正文 -->

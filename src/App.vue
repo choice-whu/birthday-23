@@ -104,7 +104,7 @@
       <div v-if="showChapters" class="chapters-backdrop" @click.self="showChapters = false">
         <div class="chapters-modal">
           <div class="chapters-head">
-            <h3>23 岁生日手账目录</h3>
+            <h3>{{ SITE_CONFIG.profile.age }} 岁生日手账目录</h3>
             <button type="button" class="chapters-close" @click="showChapters = false">✕</button>
           </div>
           <div class="chapters-grid">

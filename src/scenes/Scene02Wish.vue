@@ -29,9 +29,9 @@
         </div>
       </div>
 
-      <!-- 左侧 23 岁抱花童年立牌与草莓蛋糕主视觉（供幕 1 撕开直接裸露） -->
+      <!-- 左侧年龄数字、抱花童年立牌与草莓蛋糕（随幕 1 撕开露出） -->
       <div ref="cakeStageEl" class="cake-stage">
-        <img :src="assetUrl('assets/art/number_23.webp')" alt="23" class="art-23" />
+        <img :src="assetUrl('assets/art/number_22.webp')" :alt="String(SITE_CONFIG.profile.age)" class="age-art" />
         <img :src="assetUrl('assets/photos/her_cake_cut.webp')" alt="佳奇 guaiguai" class="portrait-cake" />
         <img :src="assetUrl('assets/art/hat_blue_stripes.webp')" alt="生日帽" class="hat-stripes" />
         <img :src="assetUrl('assets/art/cake_strawberry.webp')" alt="草莓奶油蛋糕" class="cake-strawberry" />
@@ -680,7 +680,7 @@ defineExpose({
   height: 520px;
 }
 
-.art-23 {
+.age-art {
   position: absolute;
   left: 54px;
   top: 24px;

@@ -5,8 +5,10 @@ import { assetUrl } from './audio'
 export const preloadProgress = ref(0)
 export const preloadDone = ref(false)
 
+const INITIAL_PRELOAD_TIMEOUT_MS = 4000
+
 const TIER1_ASSETS = [
-  'assets/art/number_23.webp',
+  'assets/art/number_22.webp',
   'assets/art/cake_strawberry.webp',
   'assets/art/hat_blue_stripes.webp',
   'assets/art/crown_gold.webp',
@@ -61,6 +63,7 @@ export async function runPriorityPreload(): Promise<void> {
   const totalSteps = TIER1_ASSETS.length + 1 // +1 for fonts.ready
   let completed = 0
   const bump = () => {
+    if (preloadDone.value) return
     completed += 1
     preloadProgress.value = Math.min(100, Math.round((completed / totalSteps) * 100))
   }
@@ -73,10 +76,16 @@ export async function runPriorityPreload(): Promise<void> {
         ]).then(bump)
       : Promise.resolve().then(bump)
 
-  await Promise.all([
+  const preload = Promise.all([
     fontPromise,
     ...TIER1_ASSETS.map((src) => loadImage(src).then(bump)),
   ])
+  let timeout: ReturnType<typeof setTimeout> | undefined
+  const deadline = new Promise<void>((resolve) => {
+    timeout = setTimeout(resolve, INITIAL_PRELOAD_TIMEOUT_MS)
+  })
+  await Promise.race([preload, deadline])
+  clearTimeout(timeout)
 
   preloadProgress.value = 100
   preloadDone.value = true

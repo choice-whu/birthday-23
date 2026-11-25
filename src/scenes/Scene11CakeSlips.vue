@@ -7,7 +7,7 @@
       <!-- 阶段顶栏提示（熄灯前显示） -->
       <header v-if="phase !== 'lit'" class="scene-header">
         <h2 class="scene-title">
-          {{ phase === 'stack' ? '把祝福纸条叠成一个生日蛋糕吧' : '划亮火柴，点亮 23 岁的第一束烛光' }}
+          {{ phase === 'stack' ? '把祝福纸条叠成一个生日蛋糕吧' : '划亮火柴，点亮 22 岁的第一束烛光' }}
         </h2>
         <p class="scene-sub">
           {{
@@ -254,7 +254,7 @@
                 <div class="vintage-inner-border">
                   <div class="vintage-top-row">
                     <span>CHINA · SAFETY</span>
-                    <span class="vintage-star">✦ 23 ✦</span>
+                    <span class="vintage-star">✦ {{ SITE_CONFIG.profile.age }} ✦</span>
                     <span>SPECIAL</span>
                   </div>
                   <div class="vintage-center-emblem">
@@ -265,7 +265,7 @@
                     </svg>
                     <span class="vintage-cn">安全火柴</span>
                   </div>
-                  <div class="vintage-bottom-row">平安喜乐 · 点亮二十三岁</div>
+                  <div class="vintage-bottom-row">平安喜乐 · 点亮二十二岁</div>
                 </div>
               </div>
             </div>
@@ -337,7 +337,7 @@
         <div class="lit-top-flank right-flank">{{ SITE_CONFIG.scene11.litTopRight }}</div>
 
         <div class="lit-right-column">
-          <span class="lit-kicker">23rd Birthday Candlelight</span>
+          <span class="lit-kicker">22nd Birthday Candlelight</span>
           <p class="lit-blessing">{{ SITE_CONFIG.scene11.litRightText }}</p>
         </div>
 

@@ -73,7 +73,7 @@
         <div class="polaroid-foot">
           <span v-if="step === 'ejected'">点击查看</span>
           <span v-else-if="step === 'developing'">显影中…</span>
-          <span v-else>guaiguai · 23</span>
+          <span v-else>guaiguai · {{ SITE_CONFIG.profile.age }}</span>
         </div>
 
         <!-- 换装完毕后，在相纸上方显现椭圆虚线裁切轨与小剪刀 -->

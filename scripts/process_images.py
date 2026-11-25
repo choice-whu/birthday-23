@@ -255,7 +255,7 @@ def clean_old():
 
 ART_ITEMS = [
     ("crown_gold", 234, 24),
-    ("number_23", 234, 24),
+    ("number_22", 234, 24),
     ("cake_strawberry", 240, 18),
     ("hat_blue_stripes", 240, 18),
     ("polaroid_camera", 234, 24),

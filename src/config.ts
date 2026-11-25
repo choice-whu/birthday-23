@@ -47,7 +47,7 @@ export const SITE_CONFIG = {
     myName: 'choice',
     herBirthYear: 2003,
     myBirthYear: 2006,
-    age: 23,
+    age: 22,
     birthdayDate: '12.14',
     lockScreenDate: '12月14日 星期一',
     togetherDate: '2025.06.27',
@@ -71,7 +71,7 @@ export const SITE_CONFIG = {
 
   scene1: {
     to: '佳奇 guaiguai',
-    topic: '23岁生日快乐',
+    topic: '22岁生日快乐',
     badge: 'HBD · guaiguai',
     badgeSub: 'A birthday gift, made only for you',
     enTitle: ['A GIFT', 'FOR YOU'] as const,
@@ -354,7 +354,7 @@ export const SITE_CONFIG = {
 
   scene8: {
     title: 'intangible lottery ticket!',
-    subtitle: '23 岁好运刮刮乐 · 刮开三格看看',
+    subtitle: '22 岁好运刮刮乐 · 刮开三格看看',
     cards: [
       { label: '第一张好运', result: '一战成硕 · 考研成功上岸！' },
       { label: '第二张好运', result: '健身成果显著 · 好身材吃不胖！' },
@@ -404,7 +404,7 @@ export const SITE_CONFIG = {
     notification: {
       sender: 'choice',
       time: '现在',
-      body: '23岁生日快乐！以后的每一个生日，都想陪你过。',
+      body: '22岁生日快乐！以后的每一个生日，都想陪你过。',
     },
     nextLabel: '一起拼个蛋糕叭 →',
   },
@@ -416,7 +416,7 @@ export const SITE_CONFIG = {
         color: '#9A82C4',
         width: 490,
         rotation: -0.6,
-        text: '生日快乐！☀️ 今天不是庆祝你几岁，而是庆祝你存在，愿你在属于你的 23 岁新岁朝日，有着无法丈量的珍贵与美丽！新的一岁，有着万事胜意的运气，如果没有，希望你有化险为夷的能力，昭昭如愿，岁岁安澜。',
+        text: '生日快乐！☀️ 今天不是庆祝你几岁，而是庆祝你存在，愿你在属于你的 22 岁新岁朝日，有着无法丈量的珍贵与美丽！新的一岁，有着万事胜意的运气，如果没有，希望你有化险为夷的能力，昭昭如愿，岁岁安澜。',
       },
       {
         layer: 2,
@@ -453,7 +453,7 @@ export const SITE_CONFIG = {
         color: '#F7C6CE',
         width: 210,
         rotation: 0.8,
-        text: '23 岁生日快乐 永远开心～',
+        text: '22 岁生日快乐 永远开心～',
       },
     ] as PaperSlipConfig[],
     wrongOrderBubble: '这张纸条太短啦，要先拿更宽的纸条当下面一层哦~',
@@ -467,7 +467,7 @@ export const SITE_CONFIG = {
   scene12: {
     endingMode: 'love_letter' as EndingMode,
     dingDong: '叮咚——',
-    letterTitle: '写给 23 岁的佳奇 guaiguai：',
+    letterTitle: '写给 22 岁的佳奇 guaiguai：',
     letterParagraphs: [
       '生日快乐，我最爱的女孩。',
       '从2025年6月27日，我从背后拿出那朵花的那一刻起，我相信我的人生轨迹就已经改变了。',

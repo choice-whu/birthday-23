@@ -527,7 +527,7 @@ async function onClickSaveWallpaper() {
     } else {
       const a = document.createElement('a')
       a.href = url
-      a.download = 'guaiguai_23_wallpaper.png'
+      a.download = `guaiguai_${SITE_CONFIG.profile.age}_wallpaper.png`
       document.body.appendChild(a)
       a.click()
       a.remove()

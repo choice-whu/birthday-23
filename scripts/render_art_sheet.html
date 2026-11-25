@@ -44,7 +44,7 @@
         <feTurbulence type="fractalNoise" baseFrequency="0.032" numOctaves="3" seed="11" result="noise" />
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G" />
       </filter>
-      <!-- Heavy waxy crayon edge wobble for number_23 -->
+      <!-- Heavy waxy crayon edge wobble for number_22 -->
       <filter id="crayon-wobble" x="-8%" y="-8%" width="116%" height="116%">
         <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" seed="7" result="noise" />
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="5.5" xChannelSelector="R" yChannelSelector="G" />
@@ -127,8 +127,8 @@
   </svg>
 
   <div class="grid">
-    <!-- 0: number_23 -->
-    <div class="cell" id="cell-number_23">
+    <!-- 0: number_22 -->
+    <div class="cell" id="cell-number_22">
       <svg viewBox="0 0 400 400">
         <!-- Digit 2: chunky cobalt crayon -->
         <g filter="url(#crayon-wobble)" transform="translate(-8, 12)">
@@ -139,16 +139,15 @@
             fill="none" stroke="#DDE9F6" stroke-width="4" stroke-dasharray="14 9 6 12" stroke-linecap="round" opacity="0.65" />
           <path d="M52 312 L176 312" fill="none" stroke="#1E3C66" stroke-width="4" stroke-dasharray="18 8 10 6" stroke-linecap="round" opacity="0.5" />
         </g>
-        <!-- Digit 3: lighter denim crayon overlapping slightly -->
-        <g filter="url(#crayon-wobble)" transform="translate(8, 6)">
-          <path d="M214 102 C232 68, 294 58, 328 86 C356 110, 350 156, 314 178 C356 196, 364 252, 336 290 C306 328, 240 336, 204 306 L222 264 C248 286, 288 284, 302 262 C316 240, 304 206, 266 202 L252 202 L252 162 L268 162 C298 160, 308 134, 294 116 C280 100, 250 106, 238 128 Z"
+        <!-- Second 2 in a lighter shade of blue -->
+        <g filter="url(#crayon-wobble)" transform="translate(174, 12)">
+          <path d="M56 126 C58 72, 118 46, 162 66 C198 84, 202 138, 174 178 C148 214, 96 250, 74 282 L188 282 L192 330 L34 330 C34 276, 86 218, 124 176 C144 152, 148 118, 126 104 C104 90, 88 108, 86 136 Z"
             fill="url(#pencil-hatch-light-blue)" stroke="#2E5485" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round" />
-          <path d="M236 96 C268 78, 318 86, 328 118 M236 296 C268 310, 318 296, 326 254"
+          <path d="M68 118 C76 80, 126 62, 156 80 C184 96, 182 138, 156 172 C132 204, 86 244, 62 288"
             fill="none" stroke="#EAF2FB" stroke-width="3.5" stroke-dasharray="12 8" stroke-linecap="round" opacity="0.7" />
-          <!-- Cute hand-drawn blue outline star perched on top-right of 3 -->
-          <path d="M338 38 L346 56 L366 58 L351 71 L356 91 L338 80 L320 91 L325 71 L310 58 L330 56 Z"
-            fill="#DCEAF9" fill-opacity="0.75" stroke="#2D5284" stroke-width="4" stroke-linejoin="round" />
         </g>
+        <path d="M340 42 L348 60 L368 62 L353 75 L358 95 L340 84 L322 95 L327 75 L312 62 L332 60 Z"
+          fill="#DCEAF9" fill-opacity="0.75" stroke="#2D5284" stroke-width="4" stroke-linejoin="round" />
       </svg>
     </div>
 
