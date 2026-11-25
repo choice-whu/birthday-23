@@ -114,7 +114,7 @@
         <span class="red-pushpin" aria-hidden="true" />
         <div class="clue-meta">第 {{ cityStepIdx + 1 }} / {{ cities.length }} 站 · 寻宝暗号</div>
         <p class="clue-text">“{{ currentTargetCity.clue }}”</p>
-        <p class="clue-sub">拖着小飞机飞到对的城市（或轻点目的地）</p>
+        <p class="clue-sub">拖着小飞机飞到对的城市</p>
       </div>
 
       <!-- 可拖拽 / 飞行的复古彩绘小飞机 -->

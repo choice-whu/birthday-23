@@ -177,6 +177,7 @@
           <div v-else class="scatter-svg-wrap">
             <AccessoryArt :id="item.id" />
           </div>
+          <HandHint v-if="dressHintSticker === item.id" class="dress-hand" mode="bob" />
         </div>
       </div>
 
@@ -309,9 +310,16 @@ const SCATTER_SPOTS: Record<string, { x: number; y: number; w: number; rot: numb
   blush_stars: { x: 994, y: 552, w: 124, rot: 6 },
 }
 
+const dressHintSticker = computed(() => {
+  if (props.isUnderlay || step.value !== 'dress' || draggingKind.value) return
+  if (!wornHat.value) return 'hat_pink_dots'
+  if (!wornGlasses.value) return 'glasses_heart'
+})
+
 const currentSubPrompt = computed(() => {
   if (step.value === 'ejected') return SITE_CONFIG.scene3.developHint
   if (step.value === 'developing') return '相纸正在慢慢显影…'
+  if (step.value === 'dress') return SITE_CONFIG.scene3.dressPrompt
   return step.value === 'cut' ? SITE_CONFIG.scene3.cutPrompt : ''
 })
 
@@ -843,6 +851,20 @@ defineExpose({
 .scatter-svg-wrap {
   width: 100%;
   pointer-events: none;
+}
+
+.dress-hand {
+  position: absolute;
+  left: 56%;
+  top: 61%;
+  width: 42px;
+  height: 46px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dress-hand {
+    animation: none;
+  }
 }
 
 .drag-ghost {

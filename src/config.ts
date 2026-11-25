@@ -98,7 +98,7 @@ export const SITE_CONFIG = {
   scene3: {
     title: '今天的寿星。',
     developHint: '点击相纸，看看刚刚拍到的寿星',
-    dressPrompt: '选一顶生日帽 / 皇冠，再配一副墨镜吧~',
+    dressPrompt: '打扮一下我们的小寿星吧',
     cutPrompt: '拖着小剪刀，沿虚线剪一圈',
     teaseNeedBoth: '帽子和墨镜都要各挑一件戴整齐哦~',
     stickers: [
@@ -130,7 +130,7 @@ export const SITE_CONFIG = {
       {
         id: 1,
         title: '第一次牵手手',
-        caption: '每次相遇总在下雨天，那天风很温柔，我们第一次牵手。',
+        caption: '每次见你都是在下雨天，第一次和万小雨牵手手',
         src: 'assets/photos/daily_1.webp',
         blurSrc: 'assets/photos/daily_1_blur.webp',
       },
@@ -172,7 +172,7 @@ export const SITE_CONFIG = {
       {
         id: 7,
         title: '随手合照',
-        caption: '不需要挑什么特别的日子，普通的一天和你同框就是好日子。',
+        caption: '不需要挑什么好日子，普通的一天和你在一起就是好日子',
         src: 'assets/photos/daily_7.webp',
         blurSrc: 'assets/photos/daily_7_blur.webp',
       },
@@ -239,7 +239,7 @@ export const SITE_CONFIG = {
       {
         id: 7,
         title: '第七束 · 白雪公主',
-        remark: '蓝黄红的白雪公主配色，送给我全世界最可爱的小公主。',
+        remark: '漫长的假期好难熬，买一束白雪公主，送给全世界最可爱的小公主',
         src: 'assets/flowers/flower_07.webp',
       },
       {
@@ -349,7 +349,7 @@ export const SITE_CONFIG = {
       tearHint: '按住票根，往下撕',
     },
     heartCaption: '下一站：我们的以后',
-    nextLabel: '先给 23 岁的以后刮个好运 →',
+    nextLabel: '开个刮刮乐叭，我们第一次买就中奖了欸 →',
   },
 
   scene8: {
@@ -391,7 +391,7 @@ export const SITE_CONFIG = {
       },
     ],
     stampText: '已到账 · choice 签发',
-    nextLabel: '再去看看那时候，你小时候 →',
+    nextLabel: '看看小时候的你叭 →',
   },
 
   scene10: {
@@ -470,9 +470,12 @@ export const SITE_CONFIG = {
     letterTitle: '写给 23 岁的佳奇 guaiguai：',
     letterParagraphs: [
       '生日快乐，我最爱的女孩。',
-      '从 2025 年 6 月 27 日把第一束花递到你手里开始，这一年多走过的宏村、庐山、南昌、开封、杭州、苏州，还有每一卷胶片里你的笑脸，都是我最珍贵的收藏。',
-      '23 岁的这一年，愿你考研每一页翻过的书都变成稳稳的好消息，愿你永远被偏爱、永远自由明亮、永远不用一个人扛下疲惫。',
-      '错过的那二十几个生日我都想替你慢慢补上；从今天起，未来的每一个 12 月 14 日，我都要站在你身边祝你生日快乐。',
+      '从2025年6月27日，我从背后拿出那朵花的那一刻起，我相信我的人生轨迹就已经改变了。',
+      '12月14日，这个原本平平无奇的日子，也从此成了我生命里的一个节日——一个只为庆祝你的存在而创造的节日。（挺有宗教意味的不是吗？就像圣诞节一样。可能爱一人，本身就是一种信仰吧）',
+      '不知不觉，我们已经“在一起”536天了，这真的很长、很长。不过今天不是用来怀念的，今天只用来庆祝！',
+      '祝你每天都能睡个好觉，吃到所有自己想吃的，去所有想去的地方，像一只自由的鸟儿一样，不必在意任何世俗的压力，认认真真的享受生活。\n当然还有，学业进步，越来越酷！\n新的一岁，希望你永远自由、明朗，不用去迎合任何人的期待，只管按自己喜欢的方式去生活。',
+      'happy birthday！',
+      'ps：我不知道生日那天，我会以怎样的身份陪在你身边。但没关系，只要能在你身边，就已经很快乐了。',
     ],
     letterSign: '永远偏爱你的 choice · 2026.12.14',
     physicalClueText: '礼物就藏在你身边，抬头看看我的眼睛（或者去床头柜第二格看看）~',

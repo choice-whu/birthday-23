@@ -14,6 +14,12 @@
 
       <h2 v-if="!opened" class="arrival-ding">{{ SITE_CONFIG.scene12.dingDong }}</h2>
 
+      <div v-if="opened" class="letter-decor" aria-hidden="true">
+        <div class="sparkles sparkles-left"><i /><i /><i /></div>
+        <img :src="assetUrl('assets/art/crown_gold.webp')" alt="" class="crown-sticker" />
+        <div class="sparkles sparkles-right"><i /><i /><i /></div>
+      </div>
+
       <!-- 拆封前点舞台中央的礼盒，拆封后礼盒让位给信笺 -->
       <button
         type="button"
@@ -30,7 +36,7 @@
           class="gift-box-img"
         />
         <HandHint v-if="!opened && !isUnderlay" mode="bob" class="gift-hand-hint" />
-        <span v-if="opened" class="gift-opened-tag">23 岁专属礼盒 · 已拆封 ✨</span>
+        <span v-if="opened" class="gift-opened-tag">23 岁专属礼盒<br />· 已拆封 ✨</span>
       </button>
 
       <!-- 拆封后：一封长信 / 现实礼物线索 / 双模式终章信笺 -->
@@ -202,10 +208,10 @@ defineExpose({
 }
 
 .gift-box-stage.is-opened {
-  left: 58px;
-  top: 224px;
-  width: 268px;
-  height: 290px;
+  left: 25px;
+  top: 484px;
+  width: 138px;
+  height: 149px;
   cursor: default;
 }
 
@@ -243,16 +249,17 @@ defineExpose({
 
 .gift-opened-tag {
   position: absolute;
-  left: 50%;
-  bottom: -24px;
+  left: 45%;
+  bottom: -32px;
   transform: translateX(-50%);
-  white-space: nowrap;
-  padding: 5px 14px;
+  width: 140px;
+  padding: 4px 7px;
   border-radius: 999px;
   background: rgba(255, 252, 245, 0.92);
   border: 1.5px solid rgba(154, 130, 196, 0.45);
   font-family: var(--font-hand);
-  font-size: 16px;
+  font-size: 12px;
+  line-height: 1.25;
   color: var(--ink-soft);
   box-shadow: 0 4px 10px rgba(43, 35, 29, 0.08);
 }
@@ -269,35 +276,120 @@ defineExpose({
   color: var(--ink-soft);
 }
 
+.letter-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 7% 38%, rgba(232, 74, 127, 0.12), transparent 24%),
+    radial-gradient(ellipse at 94% 24%, rgba(242, 184, 75, 0.2), transparent 23%),
+    radial-gradient(ellipse at 94% 83%, rgba(154, 130, 196, 0.19), transparent 27%);
+  animation: letter-unfold 0.52s ease-out both;
+}
+
+.crown-sticker {
+  position: absolute;
+  top: 120px;
+  right: 45px;
+  width: 104px;
+  height: 83px;
+  object-fit: contain;
+  transform: rotate(14deg);
+  filter: drop-shadow(0 5px 6px rgba(108, 67, 31, 0.16));
+}
+
+.sparkles {
+  position: absolute;
+  width: 84px;
+  height: 94px;
+  transform: rotate(-12deg);
+}
+
+.sparkles-left {
+  left: 48px;
+  top: 203px;
+}
+
+.sparkles-right {
+  right: 38px;
+  bottom: 139px;
+  transform: rotate(19deg);
+}
+
+.sparkles i {
+  position: absolute;
+  left: 12px;
+  top: 25px;
+  width: 44px;
+  aspect-ratio: 1;
+  background: #DEA13D;
+  clip-path: polygon(50% 0%, 60% 38%, 100% 50%, 60% 60%, 50% 100%, 39% 60%, 0% 50%, 39% 39%);
+}
+
+.sparkles i:nth-child(2) {
+  left: 58px;
+  top: 2px;
+  width: 21px;
+  background: #CB7593;
+}
+
+.sparkles i:nth-child(3) {
+  left: 58px;
+  top: 74px;
+  width: 17px;
+  background: #8D7AB6;
+}
+
 /* 拆开后终章手账信笺卡片 */
 .finale-card {
   position: absolute;
-  left: 364px;
-  top: 112px;
-  width: 846px;
-  min-height: 496px;
-  padding: 36px 46px 28px;
-  background: #fffcf6;
-  border: 2px solid rgba(138, 109, 83, 0.35);
-  border-radius: 14px;
-  box-shadow: 0 16px 38px rgba(43, 35, 29, 0.14), inset 0 0 0 1px rgba(242, 184, 75, 0.18);
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 35px,
-    rgba(138, 109, 83, 0.1) 36px
-  );
+  left: 160px;
+  top: 68px;
+  width: 960px;
+  min-height: 584px;
+  padding: 34px 50px 27px;
+  background: repeating-linear-gradient(180deg, transparent 0 27px, rgba(151, 105, 79, 0.09) 27px 28px)
+    0 76px / 100% 28px repeat, linear-gradient(160deg, #fffdf9, #fff8ee);
+  border: 1px solid rgba(138, 109, 83, 0.35);
+  border-radius: 8px 10px 12px 8px;
+  box-shadow: 0 15px 35px rgba(43, 35, 29, 0.17), 5px 5px 0 -1px #e8c9c3,
+    7px 7px 0 -1px #d9b7b2;
   z-index: 20;
   display: flex;
   flex-direction: column;
   animation: letter-unfold 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+.finale-card::before,
+.finale-card::after {
+  content: '';
+  position: absolute;
+  width: 98px;
+  height: 28px;
+  pointer-events: none;
+  clip-path: polygon(0 1%, 100% 0, 97% 18%, 100% 34%, 97% 51%, 100% 67%, 97% 83%, 100% 99%,
+    0 100%, 3% 82%, 0 66%, 3% 49%, 0 33%, 3% 17%);
+}
+
+.finale-card::before {
+  left: -26px;
+  top: 4px;
+  transform: rotate(-23deg);
+  background: repeating-linear-gradient(110deg, #E6B9CDDE 0 8px, #F5D7DFE8 8px 14px);
+}
+
+.finale-card::after {
+  right: -27px;
+  bottom: 0;
+  transform: rotate(-25deg);
+  background: repeating-linear-gradient(110deg, #DDC3E7E0 0 8px, #F2E0F5E8 8px 14px);
+}
+
 /* 火漆印章 */
 .wax-seal {
   position: absolute;
   right: 36px;
-  top: 28px;
+  top: 25px;
   width: 68px;
   height: 68px;
   border-radius: 50%;
@@ -352,7 +444,7 @@ defineExpose({
 }
 
 .letter-title {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   padding-right: 78px;
   font-family: var(--font-hand);
   font-size: 32px;
@@ -364,7 +456,7 @@ defineExpose({
 .letter-paragraphs {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 8px;
   flex: 1;
 }
 
@@ -375,10 +467,10 @@ defineExpose({
 .letter-para {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 17.5px;
-  line-height: 1.66;
+  font-size: 18px;
+  line-height: 28px;
   color: var(--ink);
-  text-indent: 2em;
+  white-space: pre-line;
 }
 
 .finale-card.mode-both .letter-para {
@@ -416,7 +508,7 @@ defineExpose({
 }
 
 .letter-sign {
-  margin: 18px 0 0;
+  margin: 12px 0 0;
   text-align: right;
   font-family: var(--font-hand);
   font-size: 23px;

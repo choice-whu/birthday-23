@@ -26,58 +26,27 @@
           <div class="washi-tape tape-left" aria-hidden="true" />
           <div class="washi-tape tape-right" aria-hidden="true" />
 
-          <!-- 左侧鲜花贴纸视觉舞台（解谜 2 呈现揉皱纸团轮廓与折面阴影） -->
           <div
             ref="flowerStageEl"
             class="flower-visual"
             :class="{
-              'is-tilted': currentPuzzle.puzzleType === 'smooth' && !currentSolved,
               'is-sway': currentPuzzle.puzzleType === 'smooth' && currentSolved,
               'is-smooth-target': currentPuzzle.puzzleType === 'smooth' && !currentSolved,
             }"
-            :style="flowerTransformStyle"
           >
-            <div class="flower-wad-box" :style="crumpleClipStyle">
+            <div class="flower-wad-box">
               <img
                 :src="assetUrl(currentPuzzle.src)"
                 :alt="currentPuzzle.title"
                 class="flower-hero-img"
+                :style="currentPuzzle.puzzleType === 'smooth' ? { opacity: flatFlowerOpacity } : undefined"
               />
-
-              <!-- 未解开时的温柔微暗柔光罩 -->
-              <div v-if="!currentSolved" class="flower-dim-veil" />
-
-              <!-- 解谜 2（对不齐鸭）：被揉成纸团风格的多面折叠阴影与深折痕，抚平后逐渐展平 -->
-              <svg
-                v-if="currentPuzzle.puzzleType === 'smooth' && smoothOpacity > 0.02"
-                class="crease-overlay"
-                viewBox="0 0 320 380"
-                :style="{ opacity: smoothOpacity }"
-                aria-hidden="true"
-              >
-                <!-- 揉皱纸团深浅多边形折面阴影 -->
-                <polygon points="18,86 142,42 126,158 42,174" fill="rgba(255, 252, 245, 0.56)" />
-                <polygon points="142,42 292,76 226,162 126,158" fill="rgba(54, 38, 24, 0.34)" />
-                <polygon points="42,174 126,158 182,256 36,278" fill="rgba(68, 48, 32, 0.28)" />
-                <polygon points="126,158 226,162 296,252 182,256" fill="rgba(250, 243, 232, 0.58)" />
-                <polygon points="36,278 182,256 154,358 64,342" fill="rgba(48, 34, 22, 0.36)" />
-                <polygon points="182,256 296,252 254,344 154,358" fill="rgba(222, 206, 188, 0.48)" />
-                <polygon points="118,108 198,136 164,218 96,192" fill="rgba(42, 28, 18, 0.26)" />
-
-                <!-- 尖锐硬朗的揉皱折痕主线与亮脊反光 -->
-                <g stroke="#3A281A" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.78">
-                  <path d="M18 86 L126 158 L292 76" />
-                  <path d="M142 42 L126 158 L182 256 L296 252" />
-                  <path d="M42 174 L126 158 L36 278 L182 256 L154 358" />
-                  <path d="M226 162 L182 256 L254 344" />
-                  <path d="M88 64 L198 136 L262 198" />
-                </g>
-                <g stroke="rgba(255, 253, 248, 0.88)" stroke-width="2.1" fill="none" stroke-linecap="round">
-                  <path d="M22 90 L130 162 L288 80" />
-                  <path d="M146 46 L130 160 L185 259" />
-                  <path d="M46 178 L128 162 L40 281" />
-                </g>
-              </svg>
+              <CrumpledFlower
+                v-if="currentPuzzle.puzzleType === 'smooth' && !currentSolved"
+                :src="assetUrl(currentPuzzle.src)"
+                :progress="smoothProgress"
+              />
+              <div v-else-if="!currentSolved" class="flower-dim-veil" />
             </div>
 
             <!-- 解谜 3（跨年烟花菊）：向上划出绚丽金色手绘烟花粒子 -->
@@ -193,20 +162,14 @@
                 }}
               </p>
               <div class="smooth-meter">
-                <div class="smooth-bar" :style="{ width: `${Math.round((1 - smoothOpacity) * 100)}%` }" />
+                <div class="smooth-bar" :style="{ width: `${Math.round(smoothProgress * 100)}%` }" />
               </div>
               <HandHint v-if="!isUnderlay && !currentSolved" mode="bob" class="smooth-hand" />
             </div>
 
             <!-- 互动区 3/5：第四束跨年烟花菊 · 往上划点亮烟花 -->
             <div v-else-if="currentPuzzle.puzzleType === 'fireworks'" class="mechanic-box">
-              <p class="mechanic-tip">
-                {{
-                  currentSolved
-                    ? '零点烟花为你绽放！'
-                    : '按住花束往上划一下，点亮我们的跨年烟花'
-                }}
-              </p>
+              <p v-if="currentSolved" class="mechanic-tip">零点烟花为你绽放！</p>
               <div ref="fwSwipeEl" class="swipe-up-zone" :class="{ solved: currentSolved }">
                 <div class="swipe-up-arrow" :style="{ transform: `translateY(${fireworkLiftY}px)` }">
                   ↑ 往上划动放烟花
@@ -424,6 +387,7 @@
 import gsap from 'gsap'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import Bunting from '../components/Bunting.vue'
+import CrumpledFlower from '../components/CrumpledFlower.vue'
 import HandHint from '../components/HandHint.vue'
 import HintBubble from '../components/HintBubble.vue'
 import NextButton from '../components/NextButton.vue'
@@ -467,7 +431,7 @@ const SHELF_LAYOUT = [
   { id: 6, x: 112, y: 294, w: 144, h: 186, rot: 2.8, tagRot: 1.6, label: '06 周年纪念' },
   { id: 7, x: 270, y: 292, w: 158, h: 188, rot: -3.5, tagRot: -2, label: '07 白雪公主' },
   { id: 8, x: 448, y: 290, w: 144, h: 190, rot: 3.8, tagRot: 1.5, label: '08 暑假重逢' },
-  { id: 9, x: 610, y: 294, w: 146, h: 186, rot: -2.5, tagRot: -1.8, label: '09 我们不要分开' },
+  { id: 9, x: 610, y: 294, w: 146, h: 186, rot: -2.5, tagRot: -1.8, label: '09 不要分开' },
   { id: 10, x: 794, y: 296, w: 146, h: 184, rot: 3.4, tagRot: 2.2, label: '10 只想让你开心' },
   { id: 11, x: 960, y: 292, w: 136, h: 188, rot: -3.8, tagRot: -1.6, label: '11 比赛顺利' },
 ]
@@ -486,8 +450,7 @@ const activeModalId = ref<number | null>(null)
 
 const dualLeftX = ref(24)
 const dualRightX = ref(300)
-const smoothOpacity = ref(0.88)
-const smoothTravel = ref(0)
+const smoothProgress = ref(0)
 const fireworkLiftY = ref(0)
 
 const flowerStageEl = ref<HTMLElement | null>(null)
@@ -507,63 +470,10 @@ const activeModalFlower = computed(() =>
   activeModalId.value === null ? null : flowersList.find((f) => f.id === activeModalId.value) ?? null,
 )
 
-const crumpleRatio = computed(() =>
-  currentPuzzle.value.puzzleType === 'smooth' && !currentSolved.value
-    ? clamp(smoothOpacity.value / 0.88, 0, 1)
-    : 0,
-)
-
-const flowerTransformStyle = computed(() => {
-  if (currentPuzzle.value.puzzleType === 'smooth' && !currentSolved.value) {
-    const c = crumpleRatio.value
-    const deg = -14 * c
-    const sx = (1 - c * 0.24).toFixed(3)
-    const sy = (1 - c * 0.19).toFixed(3)
-    return { transform: `rotate(${deg.toFixed(1)}deg) scale(${sx}, ${sy})` }
-  }
-  return undefined
-})
-
-const crumpleClipStyle = computed(() => {
-  const c = crumpleRatio.value
-  if (c <= 0.02) return undefined
-  // 从正常矩形随揉皱比例 c (0->1) 收折为不规则纸团多边形轮廓
-  const wadPoly: [number, number][] = [
-    [16, 12],
-    [48, 3],
-    [84, 14],
-    [96, 36],
-    [88, 62],
-    [95, 84],
-    [68, 95],
-    [34, 90],
-    [9, 82],
-    [4, 52],
-    [10, 26],
-  ]
-  const rectPoly: [number, number][] = [
-    [0, 0],
-    [50, 0],
-    [100, 0],
-    [100, 34],
-    [100, 66],
-    [100, 100],
-    [66, 100],
-    [34, 100],
-    [0, 100],
-    [0, 52],
-    [0, 24],
-  ]
-  const pts = rectPoly.map(([rx, ry], idx) => {
-    const [wx, wy] = wadPoly[idx]
-    const x = rx + (wx - rx) * c
-    const y = ry + (wy - ry) * c
-    return `${x.toFixed(1)}% ${y.toFixed(1)}%`
-  })
-  return { clipPath: `polygon(${pts.join(', ')})` }
-})
+const flatFlowerOpacity = computed(() => clamp((smoothProgress.value - 0.88) / 0.12, 0, 1))
 
 let cleanups: (() => void)[] = []
+let smoothFinish: gsap.core.Tween | null = null
 
 function clearPuzzleHandlers() {
   while (cleanups.length) {
@@ -583,7 +493,7 @@ function solveCurrentPuzzle() {
     gsap.to(dualRightX, { value: 212, duration: 0.25, ease: 'back.out(2)' })
     playHeartbeat()
   } else if (kind === 'smooth') {
-    smoothOpacity.value = 0
+    smoothProgress.value = 1
     playPetalRustle()
     playWindChime()
   } else if (kind === 'fireworks') {
@@ -666,22 +576,31 @@ function setupCurrentPuzzle() {
     dualRightX.value = 304
     attachDualTrackDrag(hbLeftEl.value, hbRightEl.value, 118, 152, '把左右两半心跳折线拖到一起合拢哦~')
   } else if (kind === 'smooth') {
-    smoothOpacity.value = 0.88
-    smoothTravel.value = 0
+    smoothProgress.value = 0
     if (flowerStageEl.value) {
+      let travel = 0
       let lastSfx = 0
       cleanups.push(
         attachStageDrag(flowerStageEl.value, {
-          canStart: () => !currentSolved.value,
+          canStart: () => !currentSolved.value && smoothFinish === null,
           onMove(pt) {
-            smoothTravel.value += Math.hypot(pt.stepDx, pt.stepDy)
-            smoothOpacity.value = clamp(0.88 * (1 - smoothTravel.value / 190), 0, 0.88)
-            if (smoothTravel.value - lastSfx > 75) {
-              lastSfx = smoothTravel.value
+            if (smoothFinish) return
+            travel += Math.hypot(pt.stepDx, pt.stepDy)
+            smoothProgress.value = Math.min(travel / 175, 1) * 0.92
+            if (travel - lastSfx > 75) {
+              lastSfx = travel
               playPetalRustle()
             }
-            if (smoothTravel.value >= 175) {
-              solveCurrentPuzzle()
+            if (travel >= 175) {
+              smoothFinish = gsap.to(smoothProgress, {
+                value: 1,
+                duration: 0.24,
+                ease: 'sine.out',
+                onComplete() {
+                  smoothFinish = null
+                  solveCurrentPuzzle()
+                },
+              })
             }
           },
           onEnd(pt) {
@@ -812,6 +731,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  smoothFinish?.kill()
   clearPuzzleHandlers()
 })
 
@@ -962,14 +882,6 @@ defineExpose({
   inset: 14px;
   border-radius: 20px;
   background: radial-gradient(circle, rgba(250, 243, 232, 0.28) 0%, rgba(250, 243, 232, 0.08) 100%);
-  pointer-events: none;
-}
-
-.crease-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
 }
 
